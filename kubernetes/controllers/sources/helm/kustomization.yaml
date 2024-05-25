@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - ./charts/bitnami-charts.yaml
   - ./charts/prometheus-community-charts.yaml
+  - ./charts/jetstack-charts.yaml
