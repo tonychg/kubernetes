@@ -11,6 +11,10 @@
         buildInputs = with pkgs; [
           kind
           fluxcd
+          sops
+          age
+          go-task
+          kubectl
         ];
       };
     }
