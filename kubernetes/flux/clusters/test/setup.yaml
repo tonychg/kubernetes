@@ -21,7 +21,7 @@ spec:
   interval: 5m
   timeout: 10m
   retryInterval: 1m
-  path: ./kubernetes/flux/environments/test/cluster
+  path: ./kubernetes/flux/clusters/test/cluster
   prune: true
   wait: false
   sourceRef:

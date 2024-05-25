@@ -11,7 +11,7 @@ spec:
   dependsOn:
     - name: flux-system
     - name: config
-  path: ./kubernetes/flux/environments/${ENVIRONMENT}/controllers
+  path: ./kubernetes/flux/clusters/${ENVIRONMENT}/controllers
   prune: true
   force: true
   wait: true

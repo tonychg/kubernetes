@@ -16,7 +16,7 @@ tasks:
         flux create secret git flux-git-auth \
           --url="ssh://git@github.com/tonychg/kubernetes.git" \
           --private-key-file=.secrets/fluxcd
-        kubectl apply -f ./kubernetes/flux/environments/test/setup.yaml
+        kubectl apply -f ./kubernetes/flux/clusters/test/setup.yaml
   default:
     desc: "List tasks"
     cmds:

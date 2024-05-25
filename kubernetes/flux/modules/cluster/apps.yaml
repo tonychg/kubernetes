@@ -12,7 +12,7 @@ spec:
     - name: controllers
     - name: flux-system
     - name: config
-  path: ./kubernetes/flux/environments/${ENVIRONMENT}/apps
+  path: ./kubernetes/flux/clusters/${ENVIRONMENT}/apps
   prune: true
   force: true
   wait: true
