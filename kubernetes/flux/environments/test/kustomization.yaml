@@ -4,6 +4,5 @@ kind: Kustomization
 resources:
   - ./bootstrap.yaml
   - ./config.yaml
+  - ./controllers.yaml
   - ../../modules/setup/install.yaml
-  - ./controllers/sources.yaml
-  - ./controllers/operators

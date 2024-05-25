@@ -6,3 +6,4 @@ metadata:
   name: cluster-settings
 data:
   CONFIG_TIMEZONE: "Europe/Paris"
+  ENVIRONMENT: "production"
