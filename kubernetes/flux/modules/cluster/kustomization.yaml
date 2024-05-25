@@ -2,8 +2,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ./bootstrap.yaml
   - ./config.yaml
   - ./controllers.yaml
   - ./apps.yaml
-  - ../../modules/setup/install.yaml

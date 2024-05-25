@@ -18,8 +18,10 @@ metadata:
   name: flux-system
   namespace: flux-system
 spec:
-  interval: 2m
-  path: ./kubernetes/flux/environments/test
+  interval: 5m
+  timeout: 10m
+  retryInterval: 1m
+  path: ./kubernetes/flux/environments/test/cluster
   prune: true
   wait: false
   sourceRef:
@@ -29,3 +31,6 @@ spec:
     provider: sops
     secretRef:
       name: sops-age
+  postBuild:
+    substitute:
+      ENVIRONMENT: test
