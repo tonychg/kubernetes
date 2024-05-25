@@ -6,3 +6,4 @@ resources:
   - ./config.yaml
   - ../../modules/setup/install.yaml
   - ./controllers/sources.yaml
+  - ./controllers/operators
