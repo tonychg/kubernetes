@@ -5,4 +5,5 @@ resources:
   - ./bootstrap.yaml
   - ./config.yaml
   - ./controllers.yaml
+  - ./apps.yaml
   - ../../modules/setup/install.yaml
