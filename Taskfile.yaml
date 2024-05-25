@@ -1,0 +1,23 @@
+---
+version: '3'
+tasks:
+  setup:
+    desc: "Setup the project"
+    cmds:
+      - |
+        flux install \
+          --components-extra=image-reflector-controller,image-automation-controller
+        pass show github-kubernetes | kubectl create secret generic sops-age \
+          --namespace=flux-system --from-file=age.agekey=/dev/stdin
+  bootstrap:
+    desc: "Bootstrap gitops repo"
+    cmds:
+      - |
+        flux create secret git flux-git-auth \
+          --url="ssh://git@github.com/tonychg/kubernetes.git" \
+          --private-key-file=./fluxcd
+        kubectl apply -f ./kubernetes/flux/modules/bootstrap/ks.yaml
+  default:
+    desc: "List tasks"
+    cmds:
+      - task --list-all
