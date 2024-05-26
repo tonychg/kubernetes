@@ -1,0 +1,9 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ./namespace.yaml
+  - ./helm-exporter/helmrelease.yaml
+  - ./monitoring-proxy/helmrelease.yaml
+  - ./x509-certificate-exporter/helmrelease.yaml
+  - ./helmrelease.yaml

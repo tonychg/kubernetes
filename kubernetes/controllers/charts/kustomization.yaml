@@ -6,3 +6,5 @@ resources:
   - ./prometheus-community-charts.yaml
   - ./jetstack-charts.yaml
   - ./grafana-charts.yaml
+  - ./enix-charts.yaml
+  - ./shanestarcher-charts.yaml

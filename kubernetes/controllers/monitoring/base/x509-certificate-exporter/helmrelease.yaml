@@ -1,0 +1,31 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: x509-certificate-exporter
+  namespace: monitoring
+spec:
+  releaseName: x509-certificate-exporter
+  interval: 1m
+  chart:
+    spec:
+      chart: x509-certificate-exporter
+      version: 3.14.0
+      sourceRef:
+        kind: HelmRepository
+        name: enix-charts
+        namespace: flux-system
+  dependsOn:
+    - name: kube-prometheus-stack
+      namespace: monitoring
+  values:
+    secretsExporter:
+      resources:
+        requests:
+          cpu: 20m
+          memory: 32Mi
+          ephemeral-storage: 10Mi
+        limits:
+          cpu: 500m
+          memory: 256Mi
+          ephemeral-storage: 10Mi

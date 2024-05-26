@@ -1,0 +1,17 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: monitoring-proxy
+  namespace: kube-system
+spec:
+  releaseName: monitoring-proxy
+  chart:
+    spec:
+      chart: monitoring-proxy
+      sourceRef:
+        kind: HelmRepository
+        name: enix-charts
+        namespace: flux-system
+      version: 0.2.0
+  interval: 1h
