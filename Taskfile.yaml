@@ -1,22 +1,27 @@
 ---
 version: '3'
+vars:
+  CLUSTER_NAME: local-test
 tasks:
-  setup:
-    desc: "Setup the project"
+  bootstrap:
+    desc: Bootstrap gitops repo
+    deps:
+      - task: wipe
     cmds:
       - |
+        kind create cluster --name="{{.CLUSTER_NAME}}"
         flux install \
           --components-extra=image-reflector-controller,image-automation-controller
         cat .secrets/key.txt | kubectl create secret generic sops-age \
           --namespace=flux-system --from-file=age.agekey=/dev/stdin
-  bootstrap:
-    desc: "Bootstrap gitops repo"
-    cmds:
-      - |
         flux create secret git flux-git-auth \
           --url="ssh://git@github.com/tonychg/kubernetes.git" \
           --private-key-file=.secrets/fluxcd
         kubectl apply -f ./kubernetes/flux/clusters/test/setup.yaml
+  wipe:
+    desc: Wipe cluster
+    cmds:
+      - kind delete cluster --name="{{.CLUSTER_NAME}}"
   default:
     desc: "List tasks"
     cmds:
