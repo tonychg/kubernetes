@@ -1,0 +1,14 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: grafana
+  namespace: flux-system
+spec:
+  values:
+    persistence:
+      enabled: true
+      storageClassName: ${STORAGE_CLASS}
+      accessModes:
+        - ReadWriteOnce
+      size: 10Gi

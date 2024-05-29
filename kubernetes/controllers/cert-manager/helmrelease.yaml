@@ -20,4 +20,4 @@ spec:
     installCRDs: true
     global:
       leaderElection:
-        namespace: "cert-manager"
+        namespace: cert-manager

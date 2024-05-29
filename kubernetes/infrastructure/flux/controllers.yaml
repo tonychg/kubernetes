@@ -2,17 +2,16 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: apps
+  name: controllers
   namespace: flux-system
 spec:
-  interval: 5m
-  timeout: 10m
+  interval: 30m
+  timeout: 5m
   retryInterval: 1m
   dependsOn:
-    - name: controllers
     - name: flux-system
     - name: config
-  path: ./kubernetes/flux/clusters/${ENVIRONMENT}/apps
+  path: ./kubernetes/clusters/${ENVIRONMENT}/controllers
   prune: true
   force: true
   wait: true
@@ -38,17 +37,21 @@ spec:
         kind: Kustomization
         labelSelector: substitution.flux.home.arpa/disabled notin (true)
       patch: |-
+        $patch: merge
         apiVersion: kustomize.toolkit.fluxcd.io/v1
         kind: Kustomization
         metadata:
           name: not-used
         spec:
-          interval: 10m
-          timeout: 10m
-          retryInterval: 5m
+          interval: 30m
+          timeout: 5m
+          retryInterval: 1m
           force: true
           prune: true
           wait: true
+          dependsOn:
+            - name: flux-system
+            - name: config
           sourceRef:
             kind: GitRepository
             name: flux-system

@@ -5,12 +5,12 @@ metadata:
   name: config
   namespace: flux-system
 spec:
-  interval: 5m
-  timeout: 10m
+  interval: 30m
+  timeout: 5m
   retryInterval: 1m
   dependsOn:
     - name: flux-system
-  path: ./kubernetes/config/${ENVIRONMENT}
+  path: ./kubernetes/clusters/${ENVIRONMENT}/config
   prune: true
   force: true
   wait: true

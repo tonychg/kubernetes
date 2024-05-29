@@ -15,6 +15,7 @@
           age
           go-task
           kubectl
+          kustomize
         ];
       };
     }

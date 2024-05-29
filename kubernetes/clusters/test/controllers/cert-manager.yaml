@@ -5,4 +5,6 @@ metadata:
   name: cert-manager
   namespace: flux-system
 spec:
-  path: ./kubernetes/controllers/cert-manager/${ENVIRONMENT}
+  path: ./kubernetes/controllers/cert-manager
+  dependsOn:
+    - name: charts
